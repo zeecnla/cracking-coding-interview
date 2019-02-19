@@ -1,14 +1,13 @@
 package datastructures;
 
 
-public class Stack {
+public class Stack <T> {
 	
-	
-	private static class Node {
+	private class Node {
 		private Node next;
-		private int data;
+		private T data;
 		
-		private  Node(int data){
+		private Node(T data){
 			this.next = null;
 			this.data= data;
 		}
@@ -21,18 +20,15 @@ public class Stack {
 	public boolean isEmpty(){
 		return top == null;
 	}
-	public int peek(){
+	public T peek(){
 		return top.data;
 	}
-	public void push(int data){
-		
+	public void push(T data){
 		Node node = new Node(data);
 		node.next = top;
 		top = node;
-		
-		
 	}
-	public int pop(){
+	public T pop(){
 		Node popped = top;
 		top = top.next;
 		System.out.println(popped.data);

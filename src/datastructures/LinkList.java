@@ -1,15 +1,27 @@
 package datastructures;
 
-public class MyLinkList {
+public class LinkList <T> {
 	
+	private class Node {
+		T value;
+		Node next; 
+		
+		public Node(T value, Node next){
+			this.value=value;
+			this.next = next;
+		}
+	}
+	
+
 	Node head;
 
-	public MyLinkList() {
+
+	public LinkList() {
 		// TODO Auto-generated constructor stub
 		head = null;
 	}
 	
-	public void add(int value){
+	public void add(T value){
 		Node current = head;
 		if(current==null){
 			head = new Node(value, null);
@@ -20,9 +32,9 @@ public class MyLinkList {
 		}
 		current.next = new Node(value,null);
 	}
-	public void remove(int value){
+	public void remove(T value){
 		if(head ==null) return;
-		if(head.value == value){
+		if(head.value == value || head.value.equals(value)){
 			head = head.next;
 			return;
 		}
@@ -59,9 +71,9 @@ public class MyLinkList {
 	
 	//udemy problem 1
 	//we are going to assume the lengths are equal
-	public MyLinkList startEndAlternation(MyLinkList ls2) {
+	public LinkList startEndAlternation(LinkList ls2) {
 		
-		MyLinkList ls3 = new MyLinkList();
+		LinkList ls3 = new LinkList();
 		Node currentLs1 = this.head;
 		ls2.reverse();
 		Node currentLs2 = ls2.head;

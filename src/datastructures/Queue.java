@@ -1,17 +1,17 @@
 package datastructures;
 
-public class Queue {
+public class Queue <T> {
 	
-	
-	private static class Node {
+	private class Node {
 		private Node next;
-		private int data;
+		private T data;
 		
-		private  Node(int data){
+		private  Node(T data){
 			this.next = null;
 			this.data= data;
 		}
 	}
+	
 	public Queue() {
 		// TODO Auto-generated constructor stub
 	}
@@ -25,11 +25,11 @@ public class Queue {
 		return head == null;
 		
 	}
-	public int peek(){
+	public T peek(){
 		return head.data;
 	
 	}
-	public void add(int data){
+	public void add(T data){
 		Node node = new Node(data);
 		if(head == null && tail == null){
 			tail = node;
@@ -40,7 +40,7 @@ public class Queue {
 		tail = tail.next;
 		
 	}
-	public int remove(){
+	public T remove(){
 		
 		Node removed = head;
 		head = head.next;

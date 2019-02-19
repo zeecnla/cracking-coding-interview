@@ -7,13 +7,20 @@ import java.util.Dictionary;
 
 import questions.*;
 import datastructures.*;
+
+/** 
+ * Class mostly used to test that all the data structure
+ * and algorithms work
+ * @author Cesar-Melchor
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MyLinkList ls1 = new MyLinkList();
-		MyLinkList ls2 = new MyLinkList();
+		LinkList ls1 = new LinkList();
+		LinkList ls2 = new LinkList();
 		
 		
 		/**
