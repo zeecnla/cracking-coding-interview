@@ -5,28 +5,21 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Dictionary;
 
-import questions.*;
 import datastructures.*;
-
-/** 
- * Class mostly used to test that all the data structure
- * and algorithms work
- * @author Cesar-Melchor
- *
- */
+import questions.*;
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		LinkList ls1 = new LinkList();
-		LinkList ls2 = new LinkList();
+		//MyLinkList ls1 = new MyLinkList();
+		//MyLinkList ls2 = new MyLinkList();
 		
 		
 		/**
 		 * Testing Graph Implementation and Problems
 		 */
-		Graph graph = new Graph();
+		Graph<Integer> graph = new<Integer> Graph();
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 0);
 		
@@ -47,9 +40,9 @@ public class Main {
 		
 		graph.addEdge(3, 4);
 		graph.addEdge(4, 3);
-		graph.display();
+		System.out.println(graph.toString());
 		
-		
+		/*
 		Queue queue = new Queue();
 		
 		queue.add(3);
@@ -73,5 +66,42 @@ public class Main {
 		stack.pop();
 		stack.pop();
 		
+		*/
+		//Google practice Question
+		//you are given a dictionary of words find the alphabet
+		// RAT ->ART -> CAT ->CAR
+		
+		List<String> words = new ArrayList<String>();
+		words.add("RAT");
+		words.add("ART");
+		words.add("CAT");
+		words.add("CAR");
+		
+		//findAlphabet(words);
+		
+		
+		
+		
+	}
+	public static void findAlphabet(List<String> words){
+		//directed since one letter can only come after another letter
+		//assuming same length
+		Graph<Character> alphabet = new Graph<Character>();
+		
+		for(int j=0; j < words.size(); j++){
+			String word = words.get(j);
+			System.out.println(word);
+			if(j+1 >= words.size()){
+				return;
+			}
+			String otherWord = words.get(j+1);
+			for(int i=0; i < word.length(); i++){
+				if(word.charAt(i) != otherWord.charAt(i)){
+
+					alphabet.addEdge(word.charAt(i), otherWord.charAt(i));
+				}
+			}
+		}
+		System.out.println("tset"+alphabet.toString());
 	}
 }

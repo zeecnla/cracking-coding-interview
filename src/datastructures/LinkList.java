@@ -1,6 +1,8 @@
 package datastructures;
 
-public class LinkList <T> {
+import java.util.Iterator;
+
+public class LinkList <T> implements Iterable<T> {
 	
 	private class Node {
 		T value;
@@ -47,13 +49,16 @@ public class LinkList <T> {
 			current = current.next;
 		}
 	}
-	public void display(){
+	public String display(){
+		StringBuilder s = new StringBuilder();
 		Node current = head;
+		s.append(current.value);
 		while(current !=null){
-			System.out.print(current.value +"->");
+			s.append("->");
 			current = current.next;
+			s.append(current.value);
 		}
-		System.out.println();
+		return s.toString();
 	}
 	public void reverse() {
 		Node prev = null;
@@ -71,9 +76,9 @@ public class LinkList <T> {
 	
 	//udemy problem 1
 	//we are going to assume the lengths are equal
-	public LinkList startEndAlternation(LinkList ls2) {
+	public LinkList<T> startEndAlternation(LinkList<T> ls2) {
 		
-		LinkList ls3 = new LinkList();
+		LinkList<T> ls3 = new LinkList<T>();
 		Node currentLs1 = this.head;
 		ls2.reverse();
 		Node currentLs2 = ls2.head;
@@ -89,5 +94,45 @@ public class LinkList <T> {
 		}
 		return ls3;
 			
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T> (){
+			 
+			Node current = head;
+			
+
+			@Override
+			public boolean hasNext() {
+				return current != null;
+			}
+
+			@Override
+			public T next() {
+				if(hasNext()){
+					T data = current.value;
+					current = current.next;
+					return data;
+					
+				}
+				return null;
+			}
+			
+		};
+	}
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+		Node current = head;
+		while(current!=null){
+			if(current.next == null){
+				s.append(current.value);
+			}else{
+				s.append(current.value +"-");
+			}
+			current = current.next;
+		}
+		return s.toString();
+		
 	}
 }

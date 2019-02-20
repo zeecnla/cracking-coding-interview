@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This representation will consist of using integers
@@ -20,18 +21,17 @@ public class Graph <T> {
 	}
 	
 	private class Node {
-		private T id;
-		List<Node> adjacent = new LinkedList<Node>();
-		private Node (T id) {
-			this.id = id;
+		private T data;// id .. string..char
+		LinkList<Node> adjacent = new LinkList<Node>();
+		private Node (T data) {
+			this.data = data;
 		}
-		@Override
 		public String toString(){
-			StringBuilder string = new StringBuilder();
-			string.append(id);
-			string.append(adjacent.toString());
-			return string.toString();
+			StringBuilder s = new StringBuilder();
+			s.append(data);
+			return s.toString();
 		}
+		
 	}
 	
 	//for directed graph you would only add from a -> b
@@ -39,12 +39,13 @@ public class Graph <T> {
 	public void addEdge(T a, T b){
 		Node src = getNode(a);
 		Node dest = getNode(b);
-		src.toString();
 		src.adjacent.add(dest);	
 	}
 	
 	public Node getNode(T node){
-		graph.put(node, new Node(node));
+		if(graph.get(node) == null) {
+			graph.put(node, new Node(node));
+		}
 		return graph.get(node);
 	}
 	/**
@@ -67,7 +68,7 @@ public class Graph <T> {
 		
 		if(visited.contains(source)) return false;
 		
-		visited.add(source.id);
+		visited.add(source.data);
 		if(source == destination){
 			return true;
 		}
@@ -94,10 +95,10 @@ public class Graph <T> {
 			if(node == destination){
 				return true;
 			}
-			if(visited.contains(node.id)){
+			if(visited.contains(node.data)){
 				continue;
 			}
-			visited.add(node.id);
+			visited.add(node.data);
 			
 			for(Node child : node.adjacent){
 				nextToVisit.addFirst(child);
@@ -106,10 +107,17 @@ public class Graph <T> {
 		
 		return false;
 	}
-	public void display(){
-		
-		System.out.println();
-		
-	}
+	public String toString() {
+        StringBuilder s = new StringBuilder();
+        
+    	for(Node node: graph.values()){
+    		s.append("Vertex " + node.data.toString() + ": ");
+    		s.append(System.getProperty("line.separator"));
+    		s.append('\t');
+    		s.append(node.adjacent.toString());
+    		s.append(System.getProperty("line.separator"));
+    	}
+        return s.toString();
+    }
 
 }
