@@ -43,21 +43,13 @@ public class Graph <T> {
 	}
 	
 	public Node getNode(T node){
+		
 		if(graph.get(node) == null) {
 			graph.put(node, new Node(node));
 		}
+		//System.out.println(node.toString());
 		return graph.get(node);
 	}
-	/**
-	 * Breadth first search
-	 */
-	public void bfs(){
-		
-	}
-	/**
-	 * Depth first search
-	 * @return 
-	 */
 	public boolean hasPathDFS(T src, T dest){
 		Node source = getNode(src);
 		Node destination = getNode(dest);
@@ -109,6 +101,7 @@ public class Graph <T> {
 	}
 	public String toString() {
         StringBuilder s = new StringBuilder();
+        
         
     	for(Node node: graph.values()){
     		s.append("Vertex " + node.data.toString() + ": ");

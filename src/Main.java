@@ -1,5 +1,6 @@
 
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Main {
 		
 		graph.addEdge(3, 4);
 		graph.addEdge(4, 3);
-		System.out.println(graph.toString());
+		//System.out.println(graph.toString());
 		
 		/*
 		Queue queue = new Queue();
@@ -77,7 +78,7 @@ public class Main {
 		words.add("CAT");
 		words.add("CAR");
 		
-		//findAlphabet(words);
+		findAlphabet(words);
 		
 		
 		
@@ -86,22 +87,24 @@ public class Main {
 	public static void findAlphabet(List<String> words){
 		//directed since one letter can only come after another letter
 		//assuming same length
-		Graph<Character> alphabet = new Graph<Character>();
+		Graph<Integer> alphabet = new Graph<Integer>();
 		
+		int z = 1;
 		for(int j=0; j < words.size(); j++){
 			String word = words.get(j);
-			System.out.println(word);
-			if(j+1 >= words.size()){
+			if(z >= words.size()){
 				return;
 			}
-			String otherWord = words.get(j+1);
+			String otherWord = words.get(z);
+			
 			for(int i=0; i < word.length(); i++){
 				if(word.charAt(i) != otherWord.charAt(i)){
-
-					alphabet.addEdge(word.charAt(i), otherWord.charAt(i));
+					
+					alphabet.addEdge(word.charAt(i) - 'a', otherWord.charAt(i)-'a');
 				}
 			}
+			z++;
 		}
-		System.out.println("tset"+alphabet.toString());
+		System.out.println(alphabet.toString());
 	}
 }
