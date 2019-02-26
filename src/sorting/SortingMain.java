@@ -35,14 +35,20 @@ public class SortingMain {
 		int [] sorted = {1,3,4,7,9};
 		int [] b = BubbleSort.search(a);
 		assertEquals(Equal(a,b), true);
-		assertEquals(Equal(a,b), false);
 	}
 	@Test
 	public static void testSelectionSort(){
-		
+		int [] a = {4,7,9,3,1};
+		int [] sorted = {1,3,4,7,9};
+		int [] b = SelectionSort.search(a);
+		assertEquals(Equal(a,b), true);
 	}
 	@Test
 	public static void testQuickSort(){
+		int [] a = {4,7,9,3,1,12,15,19,21,2};
+		int [] sorted = {1,3,4,7,9};
+		int [] b = SelectionSort.search(a);
+		assertEquals(Equal(a,b), true);
 	}
 	@Test
 	public static void testHeapSort(){
