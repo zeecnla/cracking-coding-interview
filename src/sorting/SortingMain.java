@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class SortingMain {
+	
 
+	static int [] sorted = {1,3,4,7,9};
 	public static void main(String[] args) {
 		new BubbleSort();
 		new QuickSort();
@@ -32,23 +34,17 @@ public class SortingMain {
 	@Test
 	public static void testBubbleSort(){
 		int [] a = {4,7,9,3,1};
-		int [] sorted = {1,3,4,7,9};
-		int [] b = BubbleSort.search(a);
-		assertEquals(Equal(a,b), true);
+		BubbleSort.sort(a);
+		assertEquals(Equal(a,sorted), true);
 	}
 	@Test
 	public static void testSelectionSort(){
 		int [] a = {4,7,9,3,1};
-		int [] sorted = {1,3,4,7,9};
-		int [] b = SelectionSort.search(a);
-		assertEquals(Equal(a,b), true);
+		SelectionSort.sort(a);
+		assertEquals(Equal(a,sorted), true);
 	}
 	@Test
 	public static void testQuickSort(){
-		int [] a = {4,7,9,3,1,12,15,19,21,2};
-		int [] sorted = {1,3,4,7,9};
-		int [] b = SelectionSort.search(a);
-		assertEquals(Equal(a,b), true);
 	}
 	@Test
 	public static void testHeapSort(){

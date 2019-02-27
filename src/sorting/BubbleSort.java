@@ -3,7 +3,7 @@ package sorting;
 public class BubbleSort {
 
 	public BubbleSort() {}
-	public static int[] search(int [] numbers){
+	public static int[] sort(int [] numbers){
 		
 		for(int i=0;i < numbers.length -1;i++){
 			for(int j =0; j < numbers.length -1 - i ; j++){

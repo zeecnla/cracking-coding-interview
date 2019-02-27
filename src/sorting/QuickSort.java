@@ -9,9 +9,14 @@ public class QuickSort {
 
 	public QuickSort() {}
 	
-	public int [] search(int [] array){
+	public static void sort(int [] array){
+		sort(array, 0, array.length-1);
+	}
+	private static void sort(int []array, int left, int right){
 		
-		int pivot = array.length/2;
+		if(left >= right ){
+			return;
+		}
 		
 		return array;
 	}

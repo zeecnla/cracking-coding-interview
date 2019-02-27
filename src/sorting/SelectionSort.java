@@ -8,7 +8,7 @@ public class SelectionSort {
 	
 	public SelectionSort(){}
 	
-	public static int[] search(int [] array){
+	public static int[] sort(int [] array){
 	
 	
 		int min = array[0];
