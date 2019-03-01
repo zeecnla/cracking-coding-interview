@@ -8,7 +8,7 @@ public class SelectionSort {
 	
 	public SelectionSort(){}
 	
-	public static int[] sort(int [] array){
+	public static void sort(int [] array){
 	
 	
 		int min = array[0];
@@ -25,7 +25,6 @@ public class SelectionSort {
 				array[index] = temp;
 			}
 		}
-		return array;
 	}
 
 }

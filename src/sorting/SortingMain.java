@@ -11,13 +11,14 @@ public class SortingMain {
 	public static void main(String[] args) {
 		new BubbleSort();
 		new QuickSort();
+		new MergeSort();
 		new HeapSort();
 		new SelectionSort();
 		
 		
 		testQuickSort();
 		testBubbleSort();
-		testHeapSort();
+		testMergeSort();
 		testSelectionSort();
 
 	}
@@ -45,9 +46,18 @@ public class SortingMain {
 	}
 	@Test
 	public static void testQuickSort(){
+		int [] a = {9,2,6,4,3,5,1};
+		int [] sorted = {1,2,3,4,5,6,9};
+		QuickSort.sort(a);
+		assertEquals(Equal(a,sorted), true);
 	}
 	@Test
-	public static void testHeapSort(){
+	public static void testMergeSort(){
+
+		int [] a = {9,2,6,4,3,5,1};
+		int [] sorted = {1,2,3,4,5,6,9};
+		MergeSort.sort(a);
+		assertEquals(Equal(a,sorted), true);
 	}
 
 }
