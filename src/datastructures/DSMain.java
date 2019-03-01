@@ -1,40 +1,42 @@
 package datastructures;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/** 
+ * Class to make sure that the data structures i implement
+ * work correctly
+ * @author Cesar-Melchor
+ *
+ */
 public class DSMain {
 
-	public DSMain() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		new Tree();
 		
-		/**
-		 * Testing Graph Implementation and Problems
-		 */
-		Graph<Integer> graph = new<Integer> Graph();
-		graph.addEdge(0, 1);
-		graph.addEdge(1, 0);
-		
-		graph.addEdge(0, 4);
-		graph.addEdge(4, 0);
-		
-		graph.addEdge(1, 2);
-		graph.addEdge(2, 1);
-		
-		graph.addEdge(1, 3);
-		graph.addEdge(3, 1);
-		
-		graph.addEdge(1, 4);
-		graph.addEdge(4, 1);
-		
-		graph.addEdge(2, 3);
-		graph.addEdge(3, 2);
-		
-		graph.addEdge(3, 4);
-		graph.addEdge(4, 3);
-		//System.out.println(graph.toString());
-
+		testTrees();
 	}
+	@Test
+	public static void testTrees(){
+		
+		Tree.insert(9);
+		Tree.insert(1);
+		Tree.insert(3);
+		Tree.insert(0);
+		Tree.insert(21);
+		Tree.insert(13);
+		
+		//			9
+		//		1	   21
+		//	   0 3    13
+		assertEquals(Tree.preOrderTraversal().equals("91032113"), true);
+		assertEquals(Tree.inOrderTraversal().equals("01391321"), true);
+		assertEquals(Tree.postOrderTraversal().equals("03113219"), true);
+		
+		
+	}
+	
+	
 
 }
