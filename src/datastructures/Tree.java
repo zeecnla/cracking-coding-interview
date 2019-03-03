@@ -1,5 +1,9 @@
 package datastructures;
-
+/**
+ * My implementation of a binary tree. No repeated nodes
+ * @author Cesar-Melchor
+ *
+ */
 public class Tree {
 	
 	private static class Node {
