@@ -12,18 +12,18 @@ import java.util.Set;
  * @author Cesar-Melchor
  *
  */
-public class Graph {
+public class Graph<T> {
 	
-	private static HashMap<Integer,Node> graph = new HashMap<Integer, Node>();
+	private HashMap<T,Node> graph = new HashMap<T, Node>();
 	
 	public Graph(){
 		
 	}
 	
-	private static class Node {
-		private Integer data;// id .. string..char
+	private class Node {
+		private T data;// id .. string..char
 		LinkList<Node> adjacent = new LinkList<Node>();
-		public Node (Integer data) {
+		public Node (T data) {
 			this.data = data;
 		}
 		public String toString(){
@@ -36,27 +36,25 @@ public class Graph {
 	
 	//for directed graph you would only add from a -> b
 	//for undirected graph you would add from both a -b and b - a
-	public static void addEdge(int a, int b){
+	public void addEdge(T a, T b){
 		Node src = getNode(a);
 		Node dest = getNode(b);
 		src.adjacent.add(dest);	
 	}
 	
-	public static Node getNode(int node){
-		
-		
+	public Node getNode(T node){
 		if(graph.get(node) == null) {
 			graph.put(node, new Node(node));
 		}
 		return graph.get(node);
 	}
-	public boolean hasPathDFS(int src, int dest){
+	public boolean hasPathDFS(T src, T dest){
 		Node source = getNode(src);
 		Node destination = getNode(dest);
-		HashSet<Integer> visited = new HashSet<Integer>();
+		HashSet<T> visited = new HashSet<T>();
 		return hasPathDFS(source, destination, visited);
 	}
-	private boolean hasPathDFS(Node source, Node destination, HashSet<Integer> visited){
+	private boolean hasPathDFS(Node source, Node destination, HashSet<T> visited){
 		
 		if(visited.contains(source)) return false;
 		
@@ -72,7 +70,7 @@ public class Graph {
 		return false;
 	}
 
-	public boolean hasPathBFS(int src, int dest){
+	public boolean hasPathBFS(T src, T dest){
 		Node source = getNode(src);
 		Node destination = getNode(dest);
 		return hasPathBFS(source, destination);
@@ -80,7 +78,7 @@ public class Graph {
 	}
 	private boolean hasPathBFS(Node source, Node destination){
 		LinkedList<Node> nextToVisit =  new LinkedList<Node>();
-		HashSet<Integer> visited = new HashSet<Integer>();
+		HashSet<T> visited = new HashSet<T>();
 		nextToVisit.add(source);
 		while(!nextToVisit.isEmpty()){
 			Node node = nextToVisit.remove();
@@ -99,17 +97,17 @@ public class Graph {
 		
 		return false;
 	}
-	public static String print() {
+	public String print() {
         StringBuilder s = new StringBuilder();
         
         
-    	for(Node node: graph.values()){
-    		s.append("Vertex " + node.data.toString() + ": ");
-    		s.append(System.getProperty("line.separator"));
-    		s.append('\t');
-    		s.append(node.adjacent.toString());
-    		s.append(System.getProperty("line.separator"));
-    	}
+	    	for(Node node: graph.values()){
+	    		s.append("Vertex " + node.data.toString() + ": ");
+	    		s.append(System.getProperty("line.separator"));
+	    		s.append('\t');
+	    		s.append(node.adjacent.toString());
+	    		s.append(System.getProperty("line.separator"));
+	    	}
         return s.toString();
     }
 
